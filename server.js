@@ -22,6 +22,12 @@ var distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
 
 
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`app running on port ${PORT}`)
+});
+
+
 /* ------------------- POST STUDENT -------------------- */
 
 
@@ -52,9 +58,4 @@ app.get("/api/student", async (request, response) => {
         response.status(500).send(error);
     }
 
-});
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`app running on port ${PORT}`)
 });
