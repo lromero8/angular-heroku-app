@@ -17,6 +17,10 @@ mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost:27017/test`, {
 
 app.use(bodyParser.json());
 
+// Create link to Angular build directory
+var distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
+
 
 /* ------------------- POST STUDENT -------------------- */
 
