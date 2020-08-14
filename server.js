@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-// var Student = require('./models/Student');
-var CONTACTS_COLLECTION = "contacts";
+var Student = require('./models/Student');
+// var CONTACTS_COLLECTION = "contacts";
 
 
 const app = express();
@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 
 app.post("/api/student", (req, res) => {
 
-    var myData = new CONTACTS_COLLECTION(req.body);
+    var myData = new Student(req.body);
     myData.save()
         .then(item => {
             res.send("Student saved to database");
@@ -39,7 +39,7 @@ app.post("/api/student", (req, res) => {
 app.get("/api/student", async (request, response) => {
 
     try {
-        var result = await CONTACTS_COLLECTION.find().exec();
+        var result = await Student.find().exec();
         response.send(result);
         // response.status(200).json(result);
         // console.log(result)
